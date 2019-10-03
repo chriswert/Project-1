@@ -1,0 +1,15 @@
+#searchResults {
+
+   
+    background-color: lightgray;
+    height: 960px;
+}
+
+
+
+.card-header {
+
+    font-weight: bolder;
+    color: green;
+    font-size: 26px;
+}
