@@ -13,3 +13,24 @@
     color: green;
     font-size: 26px;
 }
+
+
+body { 
+   
+    background: url(./images/newbackground.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .heartBut {
+
+    width: 100px;
+    color: darkred;
+
+  }
+
+  .glyphicon-heart {
+      width: 100px;
+  }
