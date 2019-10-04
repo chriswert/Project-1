@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+
+
+
+
+
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+<!-- Search results Title Div -->
+                <div class="card">
+                    <div class="card-header">
+                        Search Results
+                    </div>
+
+<!-- 
+                Filter options button and dropdown options-->
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span
+                            class="label-icon">Filters</span> 
+                            </button>
+                    <div class="dropdown-menu">
+                        <ul class="category_filters">
+                            <li>
+                                <input class="cat_type category-input" data-label="All" id="all" value="" name="radios"
+                                    type="radio"><label for="all">All</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="radios" id="Design" value="Design"><label
+                                    class="category-label" for="Design">Design</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="radios" id="Marketing" value="Marketing"><label
+                                    class="category-label" for="Marketing">Marketing</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="radios" id="Programming" value="Programming"><label
+                                    class="category-label" for="Programming">Programming</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="radios" id="Sales" value="Sales"><label class="category-label"
+                                    for="Sales">Sales</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="radios" id="Support" value="Support"><label
+                                    class="category-label" for="Support">Support</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+<!-- 
+                Example card body for returned results -->
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="card-body" id="searchResults">
+
+                    <div class="card card-body">
+
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">Fat</p>
+                        <p class="card-text">Calories</p>
+                        <p class="card-text">Sugar</p>
+                        
+                            <!-- button to take and assign modal class-->
+                            <div class="row">
+                            <div class="col-lg-3">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Recipes Detail
+                                </button>
+                            </div>
+                            <div class="col-lg-6">
+
+                                </div>
+
+                            <!-- heart button to save for later -->
+                            <div class="col-lg-3">
+
+                                <button type= "image" class="heartBut btn">
+                                    <span class="glyphicon glyphicon-heart" style="font-size:25px"></span>
+                                </button>
+
+                            </div>
+                           
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <!-- Modal code -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Link to full Recipe button -->
+                            <button type="button" class="btn btn-primary">Full Recipe Instructions</button>
+                        <!-- Save for later button -->
+                        <button type="button" class="btn btn-primary">Save for later</button>
+                        <!-- Close button -->
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
