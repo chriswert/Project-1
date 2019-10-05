@@ -34,3 +34,46 @@ body {
   .glyphicon-heart {
       width: 100px;
   }
+  .navbar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 60px;
+    background-color: rgb(4, 4, 87); 
+    border-bottom: white solid 3px;  
+}
+body {
+    background: url(images/3345808-cucumbers-onions-tomatoes-lettuce-cabbage-bell-pepper.jpg) no-repeat center fixed;
+    background-size: cover;
+}
+.aboutUs {
+    background-color: rgba(116, 0, 0, 0.856);
+    margin-top: 100px;
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px
+}
+.info {
+    font-family: Optima, sans-serif;
+    font-size: 24px;
+    color: white;
+    padding: 40px;
+    text-align: center;
+       
+}
+.navbar-brand {
+    color: white;
+    font-family: Apple Chancery, cursive;
+    font-size: 50px;
+}
+.nav-link {
+    color: rgb(0, 0, 0);
+    margin: 5px;    
+    border-radius: 10px;
+    
+}
+.nav-link:hover {
+    background-color: rgb(30, 97, 32); 
+    color: white;
+}
+.fa-utensils {
+    color: white;
+}
