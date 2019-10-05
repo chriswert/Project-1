@@ -11,7 +11,8 @@
 
     font-weight: bolder;
     color: green;
-    font-size: 26px;
+    font-size: 18px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 
@@ -22,11 +23,12 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    
   }
 
   .heartBut {
 
-    width: 100px;
+    width: 200px;
     color: darkred;
 
   }
@@ -76,4 +78,5 @@ body {
 }
 .fa-utensils {
     color: white;
+
 }
