@@ -6,36 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
     <script src="https://kit.fontawesome.com/168fd31f52.js" crossorigin="anonymous"></script>
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="assets/food.js"></script>
+
 
 
 
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand p-3 ml-5" id="pageTitle">ForkThis</a>
+        <i class="fas fa-utensils fa-7x fa-rotate-90"></i>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+
+            <ul class="navbar-nav pull-right">
+
+                <li class="nav-item">
+                    <button class="nav-link" href="./index.html">Home </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" href="./recipe-search.html">Recipe Finder</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" href="#">Product Finder</button>
+                </li>
+
+            </ul>
+        </div>
+
+
+    </nav>
     <!-- Search bar and search button -->
     <div class="container">
         <div class="row">
@@ -46,17 +67,14 @@
 
 
                 <nav class="navbar navbar-light bg-light">
-                    <a class="navbar-brand"> <i class="fas fa-carrot fa-spin fa-lg" style="color:orange;"></i> <i
-                            class="fas fa-pepper-hot fa-spin fa-lg" style="color: red;"></i> <i
-                            class="fas fa-leaf fa-spin fa-lg" style="color: green;"></i> Recipe Search <i
-                            class="fas fa-leaf fa-spin fa-lg" style="color: green;"></i> <i
-                            class="fas fa-pepper-hot fa-spin fa-lg" style="color: red;"></i> <i
-                            class="fas fa-carrot fa-spin fa-lg " style="color:orange;"></i></a>
-
+                    <a class="navbar-brand searchNavbar rounded"> <i class="fas fa-leaf  fa-lg"
+                            style="color: green;"></i> Recipe Search <i class="fas fa-leaf fa-lg"
+                            style="color: green;"></i> </a>
                     <form class="form-inline">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search Recipes"
                             aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" id="searchRecipeButton"type="submit">Search </button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="searchRecipeButton"
+                            type="submit">Search </button>
                     </form>
                 </nav>
 
@@ -77,72 +95,75 @@
             </div>
             <!-- Search results Title Div -->
             <div class="col-lg-10" id="cardDiv">
-
-                <div class="card">
-                    <div class="card-header">
+                <div class="card searchResultsDiv">
+                    <div class="card-header rounded">
                         Search Results
-                    </div>
 
-                    <!-- 
+                        <!-- 
                 Filter options button and dropdown options-->
-                    <button type="button" id="filters" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="label-icon">Filters</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <ul class="category_filters">
-                            <li>
-                                <input class="cat_type category-input" data-label="All" id="all" value="" name="radios"
-                                    type="radio"><label for="all">All</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Design" value="Design"><label id="balancedFilt"
-                                    class="category-label" for="Design">Balanced</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Marketing" value="Marketing"><label id="protienFilt"
-                                    class="category-label" for="Marketing">High Protien</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Programming" value="Programming"><label id="fatFilt"
-                                    class="category-label" for="Programming">Low Fat</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Sales" value="Sales"><label class="category-label"
-                                    id="carbFilt" for="Sales">Low Carb</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Support" value="Support"><label id="veganFilt"
-                                    class="category-label" for="Support">Vegan</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Programming" value="Programming"><label id="vegetarianFilt"
-                                    class="category-label" for="Programming">Vegetarian</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Sales" value="Sales"><label class="category-label"
-                                    id="sugarFilt" for="Sales">Sugar Conscious</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Support" value="Support"><label id="peanutFilt"
-                                    class="category-label" for="Support">Peanut Free</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Sales" value="Sales"><label class="category-label"
-                                    id="treeFilt" for="Sales">Tree Nut Free</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radios" id="Support" value="Support"><label id="alcoholFree"
-                                    class="category-label" for="Support">Alcohol Free</label>
-                            </li>
+                        <button type="button" id="filters" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="label-icon">Filters</span>
+                        </button>
 
-                        </ul>
+
+                        <div class="dropdown-menu">
+                            <ul class="category_filters">
+                                <li>
+                                    <input class="cat_type category-input" data-label="All" id="all" value=""
+                                        name="radios" type="radio"><label for="all">All</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Design" value="Design"><label
+                                        id="balancedFilt" class="category-label" for="Design">Balanced</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Marketing" value="Marketing"><label
+                                        id="protienFilt" class="category-label" for="Marketing">High Protien</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Programming" value="Programming"><label
+                                        id="fatFilt" class="category-label" for="Programming">Low Fat</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Sales" value="Sales"><label
+                                        class="category-label" id="carbFilt" for="Sales">Low Carb</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Support" value="Support"><label id="veganFilt"
+                                        class="category-label" for="Support">Vegan</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Programming" value="Programming"><label
+                                        id="vegetarianFilt" class="category-label" for="Programming">Vegetarian</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Sales" value="Sales"><label
+                                        class="category-label" id="sugarFilt" for="Sales">Sugar Conscious</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Support" value="Support"><label
+                                        id="peanutFilt" class="category-label" for="Support">Peanut Free</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Sales" value="Sales"><label
+                                        class="category-label" id="treeFilt" for="Sales">Tree Nut Free</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radios" id="Support" value="Support"><label
+                                        id="alcoholFree" class="category-label" for="Support">Alcohol Free</label>
+                                </li>
+
+                            </ul>
+                        </div>
                     </div>
+
+                </div>
+                <div class="col-lg-1">
                 </div>
             </div>
-            <div class="col-lg-1">
-            </div>
         </div>
+
         <!-- 
                 Example card body for returned results -->
         <div class="row">
