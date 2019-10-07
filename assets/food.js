@@ -14,21 +14,42 @@ $(document).ready(function () {
       // console.log(response);
 
       let recipeResults = response.hits;
-      // console.log(recipeResults);
+      console.log(recipeResults);
 
       //for loop that will return search results
       for (let i = 0; i < recipeResults.length; i++) {
         // console.log(recipeResults[i]);
 
+        let resultsDiv = $("<div>");
+        resultsDiv.addClass("card card-body");
+
         //result card api calls
-        let recipeLabel = recipeResults[i].recipe.label;
-        // console.log(recipeLabel);
-        let recipeCalories = recipeResults[i].recipe.calories;
-        // console.log(recipeCalories);
-        let recipeHealthLabels = recipeResults[i].recipe.healthLabels;
-        // console.log(recipeHealthLabels);
-        let recipeYield = recipeResults[i].recipe.yield;
-        // console.log(recipeYield);
+        let recipeLabel = $("<h5>");
+        recipeLabel.text("Title: " + recipeResults[i].recipe.label);
+
+        let recipeCalories = $("<p>");
+        recipeCalories.text("Calories: " + parseInt(recipeResults[i].recipe.calories));
+        
+        let recipeHealthLabels = $("<p>");
+        recipeHealthLabels.text("Health Labels: " + recipeResults[i].recipe.healthLabels);
+  
+        let recipeYield = $("<p>");
+        recipeYield.text("Servings: " + recipeResults[i].recipe.yield);
+
+        let moreInfoButton = $("<button>");
+        moreInfoButton.attr({type:"button", class:"btn btn-success"});
+        moreInfoButton.text("More Details");
+        // $("#searchResults").append(resultsDiv)
+    
+        resultsDiv.append(recipeLabel);
+        resultsDiv.append(recipeCalories);
+        resultsDiv.append(recipeHealthLabels);
+        resultsDiv.append(recipeYield);
+        resultsDiv.append(moreInfoButton)
+
+        $("#searchResults").append(resultsDiv);
+
+
 
         //modal api calls
         recipeLabel = recipeResults[i].recipe.label;
