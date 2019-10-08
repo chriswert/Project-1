@@ -66,6 +66,14 @@ login()
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("signed in")
+        console.log(user)
+        user.updateProfile({
+            displayName: ""
+        })
+        console.log(user)
+        user.sendEmailVerification().then(function () {
+            console.log("email verification sent!")
+        })
     } else {
         console.log("not signed in")
     }
