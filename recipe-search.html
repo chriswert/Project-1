@@ -52,6 +52,13 @@
                     <button class="nav-link" href="#">Product Finder</button>
                 </li>
 
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb pull-right">
+                      <li class="breadcrumb-item"><a class= "text-light" href="#">Sign In</a></li>
+                      <li class="breadcrumb-item"><a class= "text-light" href="#">Create Account</a></li>
+                    </ol>
+                  </nav>
+
             </ul>
         </div>
 
@@ -101,63 +108,76 @@
 
                         <!-- 
                 Filter options button and dropdown options-->
-                        <button type="button" id="filters" class="btn btn-success dropdown-toggle dropdown-toggle-split"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="label-icon">Filters</span>
-                        </button>
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn btn-success dropdown-toggle" id="health-filter" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Health Filter
+                            </button>
 
 
-                        <div class="dropdown-menu">
-                            <ul class="category_filters">
-                                <li>
-                                    <input class="cat_type category-input" data-label="All" id="all" value=""
-                                        name="radios" type="radio"><label for="all">All</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Design" value="Design"><label
-                                        id="balancedFilt" class="category-label" for="Design">Balanced</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Marketing" value="Marketing"><label
-                                        id="protienFilt" class="category-label" for="Marketing">High Protien</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Programming" value="Programming"><label
-                                        id="fatFilt" class="category-label" for="Programming">Low Fat</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Sales" value="Sales"><label
-                                        class="category-label" id="carbFilt" for="Sales">Low Carb</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Support" value="Support"><label id="veganFilt"
-                                        class="category-label" for="Support">Vegan</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Programming" value="Programming"><label
-                                        id="vegetarianFilt" class="category-label" for="Programming">Vegetarian</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Sales" value="Sales"><label
-                                        class="category-label" id="sugarFilt" for="Sales">Sugar Conscious</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Support" value="Support"><label
-                                        id="peanutFilt" class="category-label" for="Support">Peanut Free</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Sales" value="Sales"><label
-                                        class="category-label" id="treeFilt" for="Sales">Tree Nut Free</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="radios" id="Support" value="Support"><label
-                                        id="alcoholFree" class="category-label" for="Support">Alcohol Free</label>
-                                </li>
+                            <div class="dropdown-menu">
 
-                            </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="vegan" value="vegan"><label id="veganFilt"
+                                        class="category-label" for="Vegan">Vegan</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="vegetarian" value="vegetarian"><label
+                                        id="vegetarianFilt" class="category-label" for="vegetarian">Vegetarian</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="sugar-conscious" value="sugar-conscious"><label
+                                        class="category-label" id="sugarFilt" for="sugar-conscious">Sugar Conscious</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="peanut-free" value="peanut-free"><label
+                                        id="peanutFilt" class="category-label" for="peanut-free">Peanut Free</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="tree-nut-free" value="tree-nut-free"><label
+                                        class="category-label" id="treeFilt" for="tree-nut-free">Tree Nut Free</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="alcohol-free" value="alcohol-free"><label
+                                        id="alcoholFree" class="category-label" for="alcohol-free">Alcohol Free</label>
+                                </ul>
+
+                            </div>
                         </div>
-                    </div>
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn btn-success dropdown-toggle" id="diet-filter" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Diet Filter
+                            </button>
 
+
+                            <div class="dropdown-menu">
+
+
+                                <ul>
+                                    <input type="radio" name="radios" id="balanced" value="balanced"><label
+                                        id="balancedFilt" class="category-label" for="balanced">Balanced</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="high-protien" value="high-protien"><label
+                                        id="protienFilt" class="category-label" for="high-protien">High Protien</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="low-fat" value="low-fat"><label
+                                        id="fatFilt" class="category-label" for="low-fat">Low Fat</label>
+                                </ul>
+                                <ul>
+                                    <input type="radio" name="radios" id="low-carb" value="low-carb"><label
+                                        class="category-label" id="carbFilt" for="low-carb">Low Carb</label>
+                                </ul>
+                                <ul>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="col-lg-1">
                 </div>

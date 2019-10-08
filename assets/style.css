@@ -106,3 +106,35 @@ body {
     border:  rgba(116, 0, 0, 0.856) solid 3px;
     border-radius: 25px;
 }
+
+.breadcrumb {
+
+    background-color: rgb(4, 4, 87);
+    
+}
+
+.category-label{
+
+    font-size: 11px;
+}
+
+.signIn {
+    background-color: rgba(116, 0, 0, 0.856);
+  
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
+    padding: 30px;
+    color:white;
+
+
+}
+
+.newAccount {
+    background-color: rgba(116, 0, 0, 0.856);
+  
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
+    padding: 30px;
+    color:white;
+
+}
