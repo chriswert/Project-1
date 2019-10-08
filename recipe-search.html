@@ -31,6 +31,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+    <script src="./assets/food.js"></script>
 
 
 </head>
@@ -54,7 +55,7 @@
                             class="fas fa-carrot fa-spin fa-lg " style="color:orange;"></i></a>
 
                     <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search Recipes"
+                        <input id="recipe-input" class="form-control mr-sm-2" type="search" placeholder="Search Recipes"
                             aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" id="searchRecipeButton"type="submit">Search </button>
                     </form>
@@ -153,11 +154,11 @@
 
                     <div class="card card-body">
 
-                        <h5 class="card-title" id="titleDiv">Title</h5>
+                        <!-- <h5 class="card-title" id="titleDiv">Title</h5>
                         <p class="card-text" id="caloriesDiv">Calories</p>
                         <p class="card-text" id="healthLabelDiv">Health Labels</p>
                         <p class="card-text" id="totalTimeDiv">Total Time</p>
-                        <p class="card-text" id="servingsDiv">Servings</p>
+                        <p class="card-text" id="servingsDiv">Servings</p> -->
 
                         <!-- button to take and assign modal class-->
                         <div class="row">
