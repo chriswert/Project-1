@@ -1,4 +1,30 @@
-$(document).ready(function () {
+  $(document).ready(function () {
+
+  function getHealthFilter() {
+    let selected = $("input[name='healthFilter']:checked").val();
+    if (selected) {
+      return selected
+    } else {
+      return "nope"
+    }
+  }
+
+  function getDietFilter() {
+    let selected = $("input[name='dietFilter']:checked").val();
+    if (selected) {
+      return selected
+    } else {
+      return "nope"
+    }
+  }
+
+  $("input[name='healthFilter']").click(function () {
+    $("#health-filter").text = $("#health-filter").text + $(this).attr(value)
+  });
+
+  $("input[name='dietFilter']").click(function () {
+    $("#diet-filter").text = $("#diet-filter").text + $(this).attr(value)
+  });
 
   function buildQuery() {
     let baseUrl = 'https://api.edamam.com/search?'
@@ -7,20 +33,27 @@ $(document).ready(function () {
 
     baseUrl += "q=" + $("#recipe-input").val()
 
+    if (getHealthFilter() !== "nope") {
+      baseUrl += "&health=" + getHealthFilter()
+    }
+    if (getDietFilter() !== "nope") {
+      baseUrl += "&diet=" + getDietFilter()
+    }
+
     baseUrl += "&app_id=" + recipeAppId
     baseUrl += "&app_key=" + recipeAppKey
-    
+
     return baseUrl
   }
 
   function displayRecipeResults() {
+    getDietFilter();
 
     $.ajax({
       url: buildQuery(),
       method: "GET"
     }).then(function (response) {
-      // console.log(response);
-         let recipeResults = response.hits;
+      let recipeResults = response.hits;
       console.log(recipeResults);
 
       $("#searchResults").empty()
