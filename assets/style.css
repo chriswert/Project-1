@@ -1,7 +1,7 @@
 #searchResults {
 
     
-    height: 960px;
+    height: auto;
     background-color: rgba(116, 0, 0, 0.856);
     border: rgb(255, 255, 255) solid 3px;
     border-radius: 25px;
@@ -42,6 +42,7 @@ body {
     padding-right: 60px;
     background-color: rgb(4, 4, 87); 
     border-bottom: white solid 3px;  
+    font-size: bolder; 
 }
 
 .aboutUs {
@@ -69,11 +70,13 @@ body {
     color: white;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 50px;
+    font-weight: bolder; 
 }
 .nav-link {
     color: rgb(0, 0, 0);
     margin: 5px;    
     border-radius: 10px;
+  
     
 }
 .nav-link:hover {
@@ -137,4 +140,20 @@ body {
     padding: 30px;
     color:white;
 
+}
+
+.savedRecipes {
+    background-color: rgba(116, 0, 0, 0.856);
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
+
+
+}
+
+#mySavedAccounts {
+
+    height: 960px;
+    background-color: rgba(116, 0, 0, 0.856);
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
 }
