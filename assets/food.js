@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
-  function displayRecipeResults() {
+  function displayRecipeResults(recipe) {
 
-    let recipe = "pizza";
+    
     let recipeAppId = "ebb2aaf0";
     let recipeAppKey = "d9831c7736fa3c2896b448031e2382c1";
     let queryUrl = `https://api.edamam.com/search?q=${recipe}&app_id=${recipeAppId}&app_key=${recipeAppKey}`
@@ -14,7 +14,9 @@ $(document).ready(function () {
       // console.log(response);
 
       let recipeResults = response.hits;
-      console.log(recipeResults);
+      // console.log(recipeResults);
+
+      $("searchResults").empty();
 
       //for loop that will return search results
       for (let i = 0; i < recipeResults.length; i++) {
@@ -66,24 +68,25 @@ $(document).ready(function () {
     });
   }
 
-  displayRecipeResults();
+  // displayRecipeResults();
 
 
   //function to display results
-  function displayCards() {
+  // function displayCards() {
+  
+    
 
 
-  }
+  // }
 
   //on click event for search results
-  $("#searchResults").on("click", function () {
+  $("#results-view").on("click", function () {
 
-    // let sportGif = $("#gif-input").val().trim();
-    //     sports.push(sportGif);
-    //     displayButtons();
+    let recipeResults = $("#recipe-input").val();
+    
+    displayRecipeResults(recipeResults)
 
-
-  })
+  });
 
   //function to display filters
 
@@ -91,13 +94,13 @@ $(document).ready(function () {
 
   //function for filter selection
 
-  function filterSelection() {
+  // function filterSelection() {
 
     //   let excluded = "";
     //   let diet = ["balanced", "high-protein", "low-fat", "low-carb"];
     //   let health = ["alcohol-free", "peanut-free", "sugar-conscious", "tree-nut-free", "vegan", "vegetarian"]
 
-  }
+  // }
 
   // $('[data-toggle="tooltip"]').tooltip();
 
