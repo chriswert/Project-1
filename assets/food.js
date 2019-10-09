@@ -1,4 +1,4 @@
-  $(document).ready(function () {
+$(document).ready(function () {
 
   function getHealthFilter() {
     let selected = $("input[name='healthFilter']:checked").val();
@@ -47,14 +47,12 @@
   }
 
   function displayRecipeResults() {
-    getDietFilter();
-
     $.ajax({
       url: buildQuery(),
       method: "GET"
     }).then(function (response) {
       let recipeResults = response.hits;
-      console.log(recipeResults);
+      // console.log(recipeResults);
 
       $("#searchResults").empty()
 
@@ -79,28 +77,37 @@
         recipeYield.text("Servings: " + recipeResults[i].recipe.yield);
 
         let moreInfoButton = $("<button>");
-        moreInfoButton.attr({ type: "button", class: "btn btn-success" });
+        moreInfoButton.attr({
+          'type': 'button', 'id': 'ingredientButt', 'class': 'btn btn-success', 'data-toggle': 'modal',
+          'data-target': '#exampleModal'
+        });
         moreInfoButton.text("More Details");
-        // $("#searchResults").append(resultsDiv)
+
+        let heartButton = $("<button>");
+        heartButton.attr({
+          'type': 'image', 'class': 'heartBut btn', 'data-toggle': 'tooltip', 'data-placement': 'bottom',
+          'title': 'Save for Later'
+        });
+        heartButton = $("<i>");
+        heartButton.attr({ 'class': 'fas fa-heart fa-lg' });
 
         resultsDiv.append(recipeLabel);
         resultsDiv.append(recipeCalories);
         resultsDiv.append(recipeHealthLabels);
         resultsDiv.append(recipeYield);
-        resultsDiv.append(moreInfoButton)
+        resultsDiv.append(moreInfoButton);
+        resultsDiv.append(heartButton);
 
         $("#searchResults").append(resultsDiv);
-
-
 
         //modal api calls
         recipeLabel = recipeResults[i].recipe.label;
         let recipeImage = recipeResults[i].recipe.image;
         // console.log(recipeImage);
         let recipeIngredients = recipeResults[i].recipe.ingredients;
-        console.log(recipeIngredients);
+        // console.log(recipeIngredients);
         let recipeTotalNutrients = recipeResults[i].recipe.totalNutrients;
-        console.log(recipeTotalNutrients);
+        // console.log(recipeTotalNutrients);
         let recipeURL = recipeResults[i].recipe.url;
         // console.log(recipeURL);
       }
@@ -108,85 +115,20 @@
     });
   }
 
-  displayRecipeResults();
-
-
-  //function to display results
-  function displayCards() {
-
-
-  }
-
   //on click event for search results
   $("#searchRecipeButton").on("click", function () {
     event.preventDefault();
-    // let sportGif = $("#gif-input").val().trim();
-    //     sports.push(sportGif);
-    //     displayButtons();
     displayRecipeResults()
-
   })
 
-  //function to display filters
 
+  $('[data-toggle="tooltip"]').tooltip();
 
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
 
-  //function for filter selection
-
-  function filterSelection() {
-
-    //   let excluded = "";
-    //   let diet = ["balanced", "high-protein", "low-fat", "low-carb"];
-    //   let health = ["alcohol-free", "peanut-free", "sugar-conscious", "tree-nut-free", "vegan", "vegetarian"]
-
-  }
-
-  // $('[data-toggle="tooltip"]').tooltip();
-
-  // $('#myModal').on('shown.bs.modal', function () {
-  //     $('#myInput').trigger('focus')
-  //   })
-
-
-
-
-
-
-
-
-
-  // function displayProductResults() {
-
-  //   let product = "Pizza Hut pizza";
-  //   let productAppId = "e4745d65";
-  //   let productAppKey = "454fda2436cd36400901d0298d870561";
-  //   let queryUrl = `https://api.edamam.com/api/food-database/parser?ingr=${product}&app_id=${productAppId}&app_key=${productAppKey}`;
-
-  //   $.ajax({
-  //     url: queryUrl,
-  //     method: "GET"
-  //   }).then(function (response) {
-  //     console.log(response);
-
-  //     let productResults = response.hints;
-
-  //     for(let j = 0; j < productResults.length; j++) {
-
-  //       //result card api calls
-  //       let productLabel = productResults[j].food.label;
-  //       console.log(productLabel);
-  //       let productBrand = productResults[j].food.brand;
-  //       console.log(productBrand);
-  //       let productCategory = productResults[j].food.category;
-  //       console.log(productCategory);
-  //       let productNutrients = productResults[j].food.nutrients;
-  //       console.log(productNutrients);
-
-  //     }
-
-  //   });
-  // }
-  // displayProductResults();
+ 
 
 })
 

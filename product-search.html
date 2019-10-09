@@ -26,7 +26,7 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="assets/food.js"></script>
+    <script src="assets/product.js"></script>
 
 
 
@@ -78,9 +78,9 @@
 
 
                     <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search Products"
+                        <input id="product-input" class="form-control mr-sm-2" type="search" placeholder="Search Products"
                             aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search </button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="searchProductButton" type="submit">Search </button>
                     </form>
                 </nav>
 
@@ -144,15 +144,15 @@
         <div class="row">
             <div class="col-lg-1">
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-10" id="results-view">
                 <div class="card-body" id="searchResults">
 
                     <div class="card card-body">
 
-                        <h5 class="card-title">Title</h5>
+                        <!-- <h5 class="card-title">Title</h5>
                         <p class="card-text">Fat</p>
                         <p class="card-text">Calories</p>
-                        <p class="card-text">Sugar</p>
+                        <p class="card-text">Sugar</p> -->
 
                         <!-- button to take and assign modal class-->
                         <div class="row">
