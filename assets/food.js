@@ -1,20 +1,62 @@
-$(document).ready(function () {
+  $(document).ready(function () {
+
+  function getHealthFilter() {
+    let selected = $("input[name='healthFilter']:checked").val();
+    if (selected) {
+      return selected
+    } else {
+      return "nope"
+    }
+  }
+
+  function getDietFilter() {
+    let selected = $("input[name='dietFilter']:checked").val();
+    if (selected) {
+      return selected
+    } else {
+      return "nope"
+    }
+  }
+
+  $("input[name='healthFilter']").click(function () {
+    $("#health-filter").text = $("#health-filter").text + $(this).attr(value)
+  });
+
+  $("input[name='dietFilter']").click(function () {
+    $("#diet-filter").text = $("#diet-filter").text + $(this).attr(value)
+  });
+
+  function buildQuery() {
+    let baseUrl = 'https://api.edamam.com/search?'
+    let recipeAppId = "ebb2aaf0",
+      recipeAppKey = "d9831c7736fa3c2896b448031e2382c1";
+
+    baseUrl += "q=" + $("#recipe-input").val()
+
+    if (getHealthFilter() !== "nope") {
+      baseUrl += "&health=" + getHealthFilter()
+    }
+    if (getDietFilter() !== "nope") {
+      baseUrl += "&diet=" + getDietFilter()
+    }
+
+    baseUrl += "&app_id=" + recipeAppId
+    baseUrl += "&app_key=" + recipeAppKey
+
+    return baseUrl
+  }
 
   function displayRecipeResults() {
-
-    let recipe = "pizza";
-    let recipeAppId = "ebb2aaf0";
-    let recipeAppKey = "d9831c7736fa3c2896b448031e2382c1";
-    let queryUrl = `https://api.edamam.com/search?q=${recipe}&app_id=${recipeAppId}&app_key=${recipeAppKey}`
+    getDietFilter();
 
     $.ajax({
-      url: queryUrl,
+      url: buildQuery(),
       method: "GET"
     }).then(function (response) {
-      // console.log(response);
-
       let recipeResults = response.hits;
       console.log(recipeResults);
+
+      $("#searchResults").empty()
 
       //for loop that will return search results
       for (let i = 0; i < recipeResults.length; i++) {
@@ -29,18 +71,18 @@ $(document).ready(function () {
 
         let recipeCalories = $("<p>");
         recipeCalories.text("Calories: " + parseInt(recipeResults[i].recipe.calories));
-        
+
         let recipeHealthLabels = $("<p>");
         recipeHealthLabels.text("Health Labels: " + recipeResults[i].recipe.healthLabels);
-  
+
         let recipeYield = $("<p>");
         recipeYield.text("Servings: " + recipeResults[i].recipe.yield);
 
         let moreInfoButton = $("<button>");
-        moreInfoButton.attr({type:"button", class:"btn btn-success"});
+        moreInfoButton.attr({ type: "button", class: "btn btn-success" });
         moreInfoButton.text("More Details");
         // $("#searchResults").append(resultsDiv)
-    
+
         resultsDiv.append(recipeLabel);
         resultsDiv.append(recipeCalories);
         resultsDiv.append(recipeHealthLabels);
@@ -76,12 +118,12 @@ $(document).ready(function () {
   }
 
   //on click event for search results
-  $("#searchResults").on("click", function () {
-
+  $("#searchRecipeButton").on("click", function () {
+    event.preventDefault();
     // let sportGif = $("#gif-input").val().trim();
     //     sports.push(sportGif);
     //     displayButtons();
-
+    displayRecipeResults()
 
   })
 

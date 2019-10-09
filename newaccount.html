@@ -13,15 +13,6 @@
 
   <link rel="stylesheet" href="assets/style.css">
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://kit.fontawesome.com/12bd6d3b44.js" crossorigin="anonymous"></script>
-  <!-- FIREBASE LIBRARY -->
-  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
-  <script src="./assets/js/firebase.js"></script>
-  <script src="assets/food.js"></script>
-
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -58,14 +49,14 @@
         <li class="nav-item">
           <button class="nav-link" href="#">Product Finder</button>
         </li>
- 
+        
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb pull-right">
             <li class="breadcrumb-item"><a class= "text-light" href="#">Sign In</a></li>
             <li class="breadcrumb-item"><a class= "text-light" href="#">Create Account</a></li>
           </ol>
         </nav>
-
+      
 
       </ul>
 
@@ -75,18 +66,35 @@
   </nav>
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        <section class="aboutUs">
-          <p class="info">Have you ever went looking for a recipe that excluded all your food allergies or want need
-            specific nutrients and came up
-            empty. Here at ForkThis, you have the ability to search for recipes that exclude your food
-            allergy. By selecting what type of allergy or food nutrition you are looking our site will find recipes
-            tailord to your needs.
-            <br>
-            <br>
-            To find a recipe, click on the button above to start your search
-          </p>
+        <div class ="col-lg-2"></div>
+      <div class="col-lg-8">
+        <section class="newAccount">
+                <form>
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="name" class="form-control" id="exampleInputEmail1"
+                                   >
+                               
+                            </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+
+       
         </section>
+
+        <div class ="col-lg-2"></div>
       </div>
     </div>
   </div>
