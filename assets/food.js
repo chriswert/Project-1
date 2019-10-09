@@ -110,11 +110,8 @@
 
   displayRecipeResults();
 
-
   //function to display results
   function displayCards() {
-
-
   }
 
   //on click event for search results
