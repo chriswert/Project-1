@@ -1,8 +1,10 @@
 #searchResults {
 
-   
-    background-color: lightgray;
+    
     height: 960px;
+    background-color: rgba(116, 0, 0, 0.856);
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
 }
 
 
@@ -10,7 +12,7 @@
 .card-header {
 
     font-weight: bolder;
-    color: green;
+    color: white;
     font-size: 18px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
@@ -33,9 +35,7 @@ body {
 
   }
 
-  .glyphicon-heart {
-      width: 100px;
-  }
+  
   .navbar {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -43,18 +43,22 @@ body {
     background-color: rgb(4, 4, 87); 
     border-bottom: white solid 3px;  
 }
-body {
-    background: url(images/3345808-cucumbers-onions-tomatoes-lettuce-cabbage-bell-pepper.jpg) no-repeat center fixed;
-    background-size: cover;
-}
+
 .aboutUs {
     background-color: rgba(116, 0, 0, 0.856);
     margin-top: 100px;
     border: rgb(255, 255, 255) solid 3px;
-    border-radius: 25px
+    border-radius: 25px;
+}
+
+.searchResultsDiv {
+    background-color: rgba(116, 0, 0, 0.856);
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
+
 }
 .info {
-    font-family: Optima, sans-serif;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 24px;
     color: white;
     padding: 40px;
@@ -63,7 +67,7 @@ body {
 }
 .navbar-brand {
     color: white;
-    font-family: Apple Chancery, cursive;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 50px;
 }
 .nav-link {
@@ -78,5 +82,59 @@ body {
 }
 .fa-utensils {
     color: white;
+
+}
+
+#pageTitle {
+
+    color: white;
+}
+
+
+
+.searchNavbar {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bolder;
+    color: darkblue;
+  
+
+}
+
+.navbar-light {
+
+    border:  rgba(116, 0, 0, 0.856) solid 3px;
+    border-radius: 25px;
+}
+
+.breadcrumb {
+
+    background-color: rgb(4, 4, 87);
+    
+}
+
+.category-label{
+
+    font-size: 11px;
+}
+
+.signIn {
+    background-color: rgba(116, 0, 0, 0.856);
+  
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
+    padding: 30px;
+    color:white;
+
+
+}
+
+.newAccount {
+    background-color: rgba(116, 0, 0, 0.856);
+  
+    border: rgb(255, 255, 255) solid 3px;
+    border-radius: 25px;
+    padding: 30px;
+    color:white;
 
 }
