@@ -27,6 +27,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="assets/food.js"></script>
+
+  
+
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+  <script src="./assets/firebase.js"></script>
+
 </head>
 
 <body>
@@ -52,8 +60,10 @@
         
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb pull-right">
-            <li class="breadcrumb-item"><a class= "text-light" href="#">Sign In</a></li>
-            <li class="breadcrumb-item"><a class= "text-light" href="#">Create Account</a></li>
+              <span id="account-links">
+                  <a class="text-light" href="#">Sign In</a></li> <span class="text-light">/</class> 
+                  <a class="text-light" href="#">Create Account</a></li>
+              </span>
           </ol>
         </nav>
       
@@ -72,23 +82,23 @@
                 <form>
                         <div class="form-group">
                                 <label for="exampleInputEmail1">Name</label>
-                                <input type="name" class="form-control" id="exampleInputEmail1"
+                                <input type="name" class="form-control" id="name"
                                    >
                                
                             </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <input type="email" class="form-control" id="email"
                                 aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                                 else.</small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            <input type="password" class="form-control" id="password"
                                 placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <input type="button" id="register-user" class="btn btn-success" value="asdhtm">
                     </form>
 
        

@@ -1,7 +1,11 @@
 $(document).ready(function () {
 
+  let recipeResults;
+  let recipeModalReturn;
+  let buttonId;
+
   function getHealthFilter() {
-    let selected = $("input[name='healthFilter']:checked").val();
+    let selected = $("input[name='health-filter']:checked").val();
     if (selected) {
       return selected
     } else {
@@ -10,7 +14,7 @@ $(document).ready(function () {
   }
 
   function getDietFilter() {
-    let selected = $("input[name='dietFilter']:checked").val();
+    let selected = $("input[name='diet-filter']:checked").val();
     if (selected) {
       return selected
     } else {
@@ -51,8 +55,8 @@ $(document).ready(function () {
       url: buildQuery(),
       method: "GET"
     }).then(function (response) {
-      let recipeResults = response.hits;
-      // console.log(recipeResults);
+     recipeResults = response.hits;
+      console.log(recipeResults);
 
       $("#searchResults").empty()
 
@@ -70,6 +74,9 @@ $(document).ready(function () {
         let recipeCalories = $("<p>");
         recipeCalories.text("Calories: " + parseInt(recipeResults[i].recipe.calories));
 
+        let recipeDietLabels = $("<p>");
+        recipeDietLabels.text("Diet Labels: " + recipeResults[i].recipe.dietLabels);
+
         let recipeHealthLabels = $("<p>");
         recipeHealthLabels.text("Health Labels: " + recipeResults[i].recipe.healthLabels);
 
@@ -77,6 +84,7 @@ $(document).ready(function () {
         recipeYield.text("Servings: " + recipeResults[i].recipe.yield);
 
         let moreInfoButton = $("<button>");
+        moreInfoButton.attr("data-record", i);
         moreInfoButton.attr({
           'type': 'button', 'id': 'ingredientButt', 'class': 'btn btn-success', 'data-toggle': 'modal',
           'data-target': '#exampleModal'
@@ -88,29 +96,31 @@ $(document).ready(function () {
           'type': 'image', 'class': 'heartBut btn', 'data-toggle': 'tooltip', 'data-placement': 'bottom',
           'title': 'Save for Later'
         });
-        heartButton = $("<i>");
-        heartButton.attr({ 'class': 'fas fa-heart fa-lg' });
+        let heartButtonImg = $("<i>");
+        heartButtonImg.attr({ 'class': 'fas fa-heart fa-lg' });
 
         resultsDiv.append(recipeLabel);
         resultsDiv.append(recipeCalories);
+        resultsDiv.append(recipeDietLabels);
         resultsDiv.append(recipeHealthLabels);
         resultsDiv.append(recipeYield);
         resultsDiv.append(moreInfoButton);
+        heartButton.append(heartButtonImg);
         resultsDiv.append(heartButton);
 
         $("#searchResults").append(resultsDiv);
 
         //modal api calls
-        recipeLabel = recipeResults[i].recipe.label;
-        let recipeImage = recipeResults[i].recipe.image;
-        // console.log(recipeImage);
-        let recipeIngredients = recipeResults[i].recipe.ingredients;
-        // console.log(recipeIngredients);
-        let recipeTotalNutrients = recipeResults[i].recipe.totalNutrients;
-        // console.log(recipeTotalNutrients);
-        let recipeURL = recipeResults[i].recipe.url;
-        // console.log(recipeURL);
-      }
+      //   recipeLabel = recipeResults[i].recipe.label;
+      //   let recipeImage = recipeResults[i].recipe.image;
+      //   // console.log(recipeImage);
+      //   let recipeIngredients = recipeResults[i].recipe.ingredients;
+      //   // console.log(recipeIngredients);
+      //   let recipeTotalNutrients = recipeResults[i].recipe.totalNutrients;
+      //   // console.log(recipeTotalNutrients);
+      //   let recipeURL = recipeResults[i].recipe.url;
+      //   // console.log(recipeURL);
+    }
 
     });
   }
@@ -124,11 +134,72 @@ $(document).ready(function () {
 
   $('[data-toggle="tooltip"]').tooltip();
 
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
 
  
+  $(document).on('click','#ingredientButt',function(){
+
+    $(".modal-body").empty();
+    buttonId = $(this).attr("data-record")
+        
+    console.log("data record: " + buttonId);
+    console.log("data: " + recipeResults);
+
+       recipeLabel = recipeResults[buttonId].recipe.label;
+        let recipeImage = recipeResults[buttonId].recipe.image;
+        console.log(recipeImage);
+     
+        // let recipeIngredients = recipeResults[buttonId].recipe.ingredients.text;
+        // console.log(recipeIngredients);
+        let recipeTotalNutrients = recipeResults[buttonId].recipe.totalNutrients.label;
+        console.log(recipeTotalNutrients);
+        let recipeURL = recipeResults[buttonId].recipe.url;
+        console.log(recipeURL);
+
+        let modalBody = $("<div>");
+
+        recipeResults[buttonId].recipe.ingredients.forEach(function(elem) {
+          let ingredient = $("<li>");
+          ingredient.text(elem.text);
+          
+          console.log("elem text: " + elem.text)
+          modalBody.append(ingredient);
+        })
+
+        let modalPic = $("<img>");
+        modalPic.attr("src", recipeImage);
+
+        // let modalIngredientsDetail = $("<li>");
+        // modalIngredientsDetail.html(JSON.stringify(ingredients));
+
+            let modalNutrientsDetail = $("<li>");
+        modalNutrientsDetail.html(JSON.stringify(recipeTotalNutrients));
+
+        modalBody.prepend(modalPic);
+        //modalBody.append(modalIngredientsDetail);
+        modalBody.append(modalNutrientsDetail);
+
+        $(".modal-body").append(modalBody);
+
+        // $("#ingredientsList").append(modalIngredientsDetail);
+        // $("#nutrientsList").append(modalNutrientsDetail);
+        // $(".modal-body").append(modalBody)
+
+
+
+        
+
+
+
+
+
+    
+  })
+
+  $('#exampleModal').on('show.bs.modal', function () {
+    //alert('hi')
+  })
+
+
 
 })
 

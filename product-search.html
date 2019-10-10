@@ -27,7 +27,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="assets/product.js"></script>
-
+    
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+    <script src="./assets/firebase.js"></script>
 
 
 </head>
@@ -43,19 +47,21 @@
             <ul class="navbar-nav pull-right">
 
                 <li class="nav-item">
-                    <button class="nav-link" href="./index.html">Home </button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" href="./recipe-search.html">Recipe Finder</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" href="#">Product Finder</button>
-                </li>
+                    <button onclick="window.location.href = './index.html'" class="nav-link">Home </button>
+                  </li>
+                  <li class="nav-item">
+                    <button onclick="window.location.href = './recipe-search.html'" class="nav-link">Recipe Finder</button>
+                  </li>
+                  <li class="nav-item">
+                    <button onclick="window.location.href = './product-search.html'" class="nav-link">Product Finder</button>
+                  </li>
 
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a class="text-light" href="#">Sign In</a></li>
-                        <li class="breadcrumb-item"><a class="text-light" href="#">Create Account</a></li>
+                        <span id="account-links">
+                            <a class="text-light" href="#">Sign In</a></li> <span class="text-light">/</class> 
+                            <a class="text-light" href="#">Create Account</a></li>
+                        </span>
                     </ol>
                 </nav>
 
@@ -147,7 +153,7 @@
             <div class="col-lg-10" id="results-view">
                 <div class="card-body" id="searchResults">
 
-                    <div class="card card-body">
+                    <!-- <div class="card card-body"> -->
 
                         <!-- <h5 class="card-title">Title</h5>
                         <p class="card-text">Fat</p>
@@ -155,7 +161,7 @@
                         <p class="card-text">Sugar</p> -->
 
                         <!-- button to take and assign modal class-->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-3">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     data-target="#exampleModal">
@@ -164,10 +170,10 @@
                             </div>
                             <div class="col-lg-6">
 
-                            </div>
+                            </div> -->
 
                             <!-- heart button to save for later -->
-                            <div class="col-lg-3">
+                            <!-- <div class="col-lg-3">
 
                                 <button type="image" class="heartBut btn" data-toggle="tooltip" data-placement="bottom"
                                     title="Save for Later">
@@ -177,7 +183,7 @@
 
                                 </button>
 
-                            </div>
+                            </div> -->
 
 
 
