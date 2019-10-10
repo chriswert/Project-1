@@ -16,19 +16,34 @@ $(function () {
     let db = firebase.database()
     let auth = firebase.auth()
 
-    function getFavorites() {
-        db.ref(`${user}/favorites`).once('value', function () {
+    function getFavoriteRecipes() {
+        db.ref(`${user}/favorites/recipes`).once('value', function (snapshot) {
+            let data = snapshot.val()
+        })
+    }
+    function getFavoriteProducts() {
+        db.ref(`${user}/favorites/products`).once('value', function (snapshot) {
+            let data = snapshot.val()
 
         })
     }
 
-    function addFavorite() {
+    function addFavoriteRecipe(json) {
+        db.ref(`${user}/favorites/recipes`).put({
+            json
+        })
 
     }
 
-    function login() {
+    function addFavoriteProduct(json) {
+        db.ref(`${user}/favorites/products`).put({
+            json
+        })
+
+    }
+    function login(email, password) {
         console.log("Loggin in now!")
-        auth.signInWithEmailAndPassword("meero.harootunian@gmail.com", "password").catch(function (error) {
+        auth.signInWithEmailAndPassword(email, password).catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -47,9 +62,9 @@ $(function () {
         });
     }
 
-    function createUser() {
+    function createUser(email, password) {
         console.log("NOW!")
-        auth.createUserWithEmailAndPassword("meero.harootunian@gmail.com", "password").catch(function (error) {
+        auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -80,6 +95,8 @@ $(function () {
         }
 
     })
+
+    
 
 
 })

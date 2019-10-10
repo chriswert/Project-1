@@ -1,5 +1,6 @@
   $(document).ready(function () {
 
+
   function getHealthFilter() {
     let selected = $("input[name='healthFilter']:checked").val();
     if (selected) {
@@ -143,7 +144,9 @@
   // $('#myModal').on('shown.bs.modal', function () {
   //     $('#myInput').trigger('focus')
   //   })
-
+  $(document).on('show.bs.modal','#exampleModal', function () {
+    console.log("ASD")
+  })
 
 
 
