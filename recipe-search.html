@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="./assets/style.css">
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -25,10 +25,14 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="assets/food.js"></script>
 
+
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
 
     <script src="./assets/food.js"></script>
+    <script src="./assets/firebase.js"></script>
 
 
 </head>
@@ -44,19 +48,23 @@
             <ul class="navbar-nav pull-right">
 
                 <li class="nav-item">
-                    <button class="nav-link" href="./index.html">Home </button>
+                    <button onclick="window.location.href = './index.html'" class="nav-link">Home </button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" href="./recipe-search.html">Recipe Finder</button>
+                    <button onclick="window.location.href = './recipe-search.html'" class="nav-link">Recipe
+                        Finder</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" href="#">Product Finder</button>
+                    <button onclick="window.location.href = './product-search.html'" class="nav-link">Product
+                        Finder</button>
                 </li>
 
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a class="text-light" href="#">Sign In</a></li>
-                        <li class="breadcrumb-item"><a class="text-light" href="#">Create Account</a></li>
+                        <span id="account-links">
+                            <a class="text-light" href="#">Sign In</a></li> <span class="text-light">/</class> 
+                            <a class="text-light" href="#">Create Account</a></li>
+                        </span>
                     </ol>
                 </nav>
 
@@ -76,7 +84,7 @@
 
                 <nav class="navbar navbar-light bg-light">
                     <a class="navbar-brand searchNavbar rounded"> <i class="fas fa-leaf  fa-lg"
-                            style="color: green;"></i> Recipe Search  </a>
+                            style="color: green;"></i> Recipe Search </a>
                     <form class="form-inline">
                         <input id="recipe-input" class="form-control mr-sm-2" type="search" placeholder="Search Recipes"
                             aria-label="Search">
@@ -118,29 +126,31 @@
                             <div class="dropdown-menu">
 
                                 <ul>
-                                    <input type="radio" name="radios" id="vegan" value="vegan"><label id="veganFilt"
-                                        class="category-label" for="Vegan">Vegan</label>
+                                    <input type="radio" name="health-filter" id="vegan" value="vegan"><label
+                                        id="veganFilt" class="category-label" for="Vegan">Vegan</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="vegetarian" value="vegetarian"><label
+                                    <input type="radio" name="health-filter" id="vegetarian" value="vegetarian"><label
                                         id="vegetarianFilt" class="category-label" for="vegetarian">Vegetarian</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="sugar-conscious"
+                                    <input type="radio" name="health-filter" id="sugar-conscious"
                                         value="sugar-conscious"><label class="category-label" id="sugarFilt"
                                         for="sugar-conscious">Sugar Conscious</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="peanut-free" value="peanut-free"><label
+                                    <input type="radio" name="health-filter" id="peanut-free" value="peanut-free"><label
                                         id="peanutFilt" class="category-label" for="peanut-free">Peanut Free</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="tree-nut-free" value="tree-nut-free"><label
-                                        class="category-label" id="treeFilt" for="tree-nut-free">Tree Nut Free</label>
+                                    <input type="radio" name="health-filter" id="tree-nut-free"
+                                        value="tree-nut-free"><label class="category-label" id="treeFilt"
+                                        for="tree-nut-free">Tree Nut Free</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="alcohol-free" value="alcohol-free"><label
-                                        id="alcoholFree" class="category-label" for="alcohol-free">Alcohol Free</label>
+                                    <input type="radio" name="health-filter" id="alcohol-free"
+                                        value="alcohol-free"><label id="alcoholFree" class="category-label"
+                                        for="alcohol-free">Alcohol Free</label>
                                 </ul>
 
                             </div>
@@ -156,19 +166,19 @@
 
 
                                 <ul>
-                                    <input type="radio" name="radios" id="balanced" value="balanced"><label
+                                    <input type="radio" name="diet-filter" id="balanced" value="balanced"><label
                                         id="balancedFilt" class="category-label" for="balanced">Balanced</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="high-protien" value="high-protien"><label
-                                        id="protienFilt" class="category-label" for="high-protien">High Protien</label>
+                                    <input type="radio" name="diet-filter" id="high-protein" value="high-protein"><label
+                                        id="protienFilt" class="category-label" for="high-protein">High Protein</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="low-fat" value="low-fat"><label id="fatFilt"
-                                        class="category-label" for="low-fat">Low Fat</label>
+                                    <input type="radio" name="diet-filter" id="low-fat" value="low-fat"><label
+                                        id="fatFilt" class="category-label" for="low-fat">Low Fat</label>
                                 </ul>
                                 <ul>
-                                    <input type="radio" name="radios" id="low-carb" value="low-carb"><label
+                                    <input type="radio" name="diet-filter" id="low-carb" value="low-carb"><label
                                         class="category-label" id="carbFilt" for="low-carb">Low Carb</label>
                                 </ul>
                                 <ul>
@@ -192,16 +202,16 @@
             <div class="col-lg-10">
                 <div class="card-body" id="searchResults">
 
-                    <div class="card card-body">
+                    <!-- <div class="card card-body"> -->
 
-                        <!-- <h5 class="card-title" id="titleDiv">Title</h5>
+                    <!-- <h5 class="card-title" id="titleDiv">Title</h5>
                         <p class="card-text" id="caloriesDiv">Calories</p>
                         <p class="card-text" id="healthLabelDiv">Health Labels</p>
                         <p class="card-text" id="totalTimeDiv">Total Time</p>
                         <p class="card-text" id="servingsDiv">Servings</p> -->
 
-                        <!-- button to take and assign modal class-->
-                        <div class="row">
+                    <!-- button to take and assign modal class-->
+                    <!-- <div class="row">
                             <div class="col-lg-3">
                                 <button type="button" id="ingredientButt" class="btn btn-success" data-toggle="modal"
                                     data-target="#exampleModal">
@@ -210,10 +220,10 @@
                             </div>
                             <div class="col-lg-6">
 
-                            </div>
+                            </div> -->
 
-                            <!-- heart button to save for later -->
-                            <div class="col-lg-3">
+                    <!-- heart button to save for later -->
+                    <!-- <div class="col-lg-3">
 
                                 <button type="image" class="heartBut btn" data-toggle="tooltip" data-placement="bottom"
                                     title="Save for Later">
@@ -223,18 +233,18 @@
                                     <i class="fas fa-heart fa-lg"></i>
                                 </button>
 
-                            </div>
+                            </div> -->
 
 
 
 
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="col-lg-1">
-            </div>
         </div>
+    </div>
+    <div class="col-lg-1">
+    </div>
+    </div>
     </div>
     <!-- Modal code -->
     <div class="container">

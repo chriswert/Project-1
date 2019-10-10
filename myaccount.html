@@ -27,6 +27,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="assets/food.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+    <script src="./assets/firebase.js"></script>
+
 </head>
 
 <body>
@@ -52,8 +58,10 @@
 
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a class="text-light" href="#">Sign In</a></li>
-                        <li class="breadcrumb-item"><a class="text-light" href="#">Create Account</a></li>
+                        <span id="account-links">
+                            <a class="text-light" href="#">Sign In</a></li> <span class="text-light">/</class>
+                                <a class="text-light" href="#">Create Account</a></li>
+                            </span>
                     </ol>
                 </nav>
 

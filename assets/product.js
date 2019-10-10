@@ -39,15 +39,15 @@ $(document).ready(function () {
                 productCategory.text("Category: " + productResults[j].food.category);
                 // console.log(productCategory);
                 let productCarbs = $("<p>");
-                productCarbs.text("Carbs: " + productResults[j].food.nutrients.CHOCDF);
+                productCarbs.text("Carbs: " + parseInt(productResults[j].food.nutrients.CHOCDF));
                 let productFat = $("<p>");
-                productFat.text("Fat: " + productResults[j].food.nutrients.FAT);
+                productFat.text("Fat: " + parseInt((productResults[j].food.nutrients.FAT)));
                 let productFiber = $("<p>");
-                productFiber.text("Fiber: " + productResults[j].food.nutrients.FIBTG);
+                productFiber.text("Fiber: " + parseInt(productResults[j].food.nutrients.FIBTG));
                 let productEnergy = $("<p>");
-                productEnergy.text("Energy: " + productResults[j].food.nutrients.ENERC_KCAL);
+                productEnergy.text("Energy: " + parseInt(productResults[j].food.nutrients.ENERC_KCAL));
                 let productProtein = $("<p>");
-                productProtein.text("Protein: " + productResults[j].food.nutrients.PROCNT);
+                productProtein.text("Protein: " + parseInt(productResults[j].food.nutrients.PROCNT));
 
                 resultsProdDiv.append(productLabel);
                 resultsProdDiv.append(productBrand);
