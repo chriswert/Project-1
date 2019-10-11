@@ -56,10 +56,10 @@ $(document).ready(function () {
           'title': 'Save for Later'
         });
 
-                let heartButtonImg = $("<i>");
-                heartButton.attr("data-record", i);
-                 heartButtonImg.attr({ 'class': 'fas fa-heart fa-lg' });
-                 heartButton.append(heartButtonImg);
+                // let heartButtonImg = $("<i>");
+                // heartButton.attr("data-record", i);
+                //  heartButtonImg.attr({ 'class': 'fas fa-heart fa-lg' });
+                //  heartButton.append(heartButtonImg);
 
                 resultsProdDiv.append(productLabel);
                 resultsProdDiv.append(productBrand);
