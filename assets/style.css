@@ -50,6 +50,7 @@ body {
     margin-top: 100px;
     border: rgb(255, 255, 255) solid 3px;
     border-radius: 25px;
+    margin-bottom: 100px;
 }
 
 .searchResultsDiv {
@@ -158,3 +159,7 @@ body {
     border-radius: 25px;
 }
 
+.col-lg-9 {
+    text-align-last: right;
+    margin-top: -35px;
+}
