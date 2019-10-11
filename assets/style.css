@@ -16,7 +16,12 @@
     font-size: 18px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+.modalPicImg {
 
+    width: 200px;
+    height: 200px;
+    margin-left: 125px;
+}
 
 body { 
    
