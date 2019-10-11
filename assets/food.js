@@ -1,9 +1,7 @@
 $(document).ready(function () {
-
   let recipeResults;
   let recipeModalReturn;
   let buttonId;
-
   function getHealthFilter() {
     let selected = $("input[name='health-filter']:checked").val();
     if (selected) {
@@ -12,7 +10,6 @@ $(document).ready(function () {
       return "nope"
     }
   }
-
   function getDietFilter() {
     let selected = $("input[name='diet-filter']:checked").val();
     if (selected) {
@@ -21,35 +18,27 @@ $(document).ready(function () {
       return "nope"
     }
   }
-
   $("input[name='healthFilter']").click(function () {
     $("#health-filter").text = $("#health-filter").text + $(this).attr(value)
   });
-
   $("input[name='dietFilter']").click(function () {
     $("#diet-filter").text = $("#diet-filter").text + $(this).attr(value)
   });
-
   function buildQuery() {
     let baseUrl = 'https://api.edamam.com/search?'
     let recipeAppId = "ebb2aaf0",
       recipeAppKey = "d9831c7736fa3c2896b448031e2382c1";
-
     baseUrl += "q=" + $("#recipe-input").val()
-
     if (getHealthFilter() !== "nope") {
       baseUrl += "&health=" + getHealthFilter()
     }
     if (getDietFilter() !== "nope") {
       baseUrl += "&diet=" + getDietFilter()
     }
-
     baseUrl += "&app_id=" + recipeAppId
     baseUrl += "&app_key=" + recipeAppKey
-
     return baseUrl
   }
-
   function displayRecipeResults() {
     $.ajax({
       url: buildQuery(),
@@ -57,35 +46,23 @@ $(document).ready(function () {
     }).then(function (response) {
       recipeResults = response.hits;
       console.log(recipeResults);
-
       $("#searchResults").empty()
-
       //for loop that will return search results
       for (let i = 0; i < recipeResults.length; i++) {
         // console.log(recipeResults[i]);
-
         let resultsDiv = $("<div>");
         resultsDiv.addClass("card card-body");
-
         //result card api calls
         let recipeLabel = $("<h5>");
         recipeLabel.text("Title: " + recipeResults[i].recipe.label);
-
         let recipeCalories = $("<p>");
         recipeCalories.text("Calories: " + parseInt(recipeResults[i].recipe.calories));
-
         let recipeDietLabels = $("<p>");
         recipeDietLabels.text("Diet Labels: " + recipeResults[i].recipe.dietLabels);
-
         let recipeHealthLabels = $("<p>");
         recipeHealthLabels.text("Health Labels: " + recipeResults[i].recipe.healthLabels);
-
         let recipeYield = $("<p>");
         recipeYield.text("Servings: " + recipeResults[i].recipe.yield);
-
-        let moreButtonDiv = $("<div>");
-        moreButtonDiv.addClass("col-lg-3");
-
         let moreInfoButton = $("<button>");
         moreInfoButton.attr("data-record", i);
         moreInfoButton.attr({
@@ -93,36 +70,23 @@ $(document).ready(function () {
           'data-target': '#exampleModal'
         });
         moreInfoButton.text("More Details");
-
-        moreButtonDiv.append(moreInfoButton);
-
-        let heartButtonDiv = $("<div>");
-        heartButtonDiv.addClass("col-lg-9");
-
         let heartButton = $("<button>");
         heartButton.attr("data-record", i);
         heartButton.attr({
           'type': 'image', 'class': 'heartBut btn', 'data-toggle': 'tooltip', 'data-placement': 'bottom',
           'title': 'Save for Later'
         });
-
         let heartButtonImg = $("<i>");
         heartButtonImg.attr({ 'class': 'fas fa-heart fa-lg' });
-
-
-        heartButton.append(heartButtonImg);
-        heartButtonDiv.append(heartButton)
-
         resultsDiv.append(recipeLabel);
         resultsDiv.append(recipeCalories);
         resultsDiv.append(recipeDietLabels);
         resultsDiv.append(recipeHealthLabels);
         resultsDiv.append(recipeYield);
-        resultsDiv.append(moreButtonDiv);
-        resultsDiv.append(heartButtonDiv);
-
+        resultsDiv.append(moreInfoButton);
+        heartButton.append(heartButtonImg);
+        resultsDiv.append(heartButton);
         $("#searchResults").append(resultsDiv);
-
         //modal api calls
         //   recipeLabel = recipeResults[i].recipe.label;
         //   let recipeImage = recipeResults[i].recipe.image;
@@ -134,135 +98,69 @@ $(document).ready(function () {
         //   let recipeURL = recipeResults[i].recipe.url;
         //   // console.log(recipeURL);
       }
-
     });
   }
-
   //on click event for search results
   $("#searchRecipeButton").on("click", function () {
     event.preventDefault();
     displayRecipeResults()
   })
-
-
   $('[data-toggle="tooltip"]').tooltip();
-
-
-
+  
   $(document).on('click', '#ingredientButt', function () {
-
-  $("#recipeButton").empty();
-
+    $("#recipeButton").empty();
     $(".modal-body").empty();
     buttonId = $(this).attr("data-record")
-
-    
- 
-        
     console.log("data record: " + buttonId);
     console.log("data: " + recipeResults);
-
-       recipeLabel = recipeResults[buttonId].recipe.label;
-        let recipeImage = recipeResults[buttonId].recipe.image;
-       
-     
-        // let recipeIngredients = recipeResults[buttonId].recipe.ingredients.text;
-        // console.log(recipeIngredients);
-        let recipeTotalNutrients = recipeResults[buttonId].recipe.totalNutrients.label;
-        console.log(recipeTotalNutrients);
-        
-      
-
-
+    recipeLabel = recipeResults[buttonId].recipe.label;
+    let recipeImage = recipeResults[buttonId].recipe.image;
+    // let recipeIngredients = recipeResults[buttonId].recipe.ingredients.text;
+    // console.log(recipeIngredients);
+    let recipeTotalNutrients = recipeResults[buttonId].recipe.totalNutrients.label;
+    console.log(recipeTotalNutrients);
+    let modalBody = $("<div>");
+    let title = $("<ul>")
+    title.addClass("titleRec")
+    title.text("Ingredients:")
+    recipeResults[buttonId].recipe.ingredients.forEach(function (elem) {
+      let ingredient = $("<li>");
+      ingredient.text(elem.text);
+      console.log("elem text: " + elem.text)
+      title.append(ingredient);
+      modalBody.append(title)
+    })
     let modalPic = $("<img>");
+    modalPic.addClass("modalPicImg");
     modalPic.attr("src", recipeImage);
-
-
-        let title= $("<ul>")
-        title.addClass("titleRec")
-        title.text("Ingredients:")
-
-        recipeResults[buttonId].recipe.ingredients.forEach(function(elem) {
-         
-          let ingredient = $("<li>");
-          ingredient.text(elem.text);
-          
-          console.log("elem text: " + elem.text)
-          
-          title.append(ingredient);
-          modalBody.append(title)
-          
-        })
-
-        let modalPic = $("<img>");
-        modalPic.addClass("modalPicImg");
-        modalPic.attr("src", recipeImage);
-
-
-    modalBody.prepend(modalPic);
-    //modalBody.append(modalIngredientsDetail);
-    modalBody.append(modalNutrientsDetail);
-
-    $(".modal-body").append(modalBody);
-
-
-        
-        
-        var recipeUrl =recipeResults[buttonId].recipe.url;
-
-        
-        
-
-        let modalFoot = $("<div>");
-        let recButt = $("<button>");
-        recButt.text("Full Recipe Details");
-        recButt.addClass("btn btn-success")
-        recButt.attr("value", recipeUrl)
-        $("#recipeButton").append(recButt);
-
-        
-
-       
-       //let urlId = $(this).attr("value")
-
-        // let fullRec = $("<button>");
-        // fullRec.text("Full Recipe Instructions");
-        $("#recipeButton").on("click", function(){
- 
-          recipeUrl =recipeResults[buttonId].recipe.url;
-
+    // let modalIngredientsDetail = $("<li>");
+    // modalIngredientsDetail.html(JSON.stringify(ingredients));
+    let modalNutrientsDetail = $("<li>");
+    modalNutrientsDetail.html(JSON.stringify(recipeTotalNutrients));
+    var recipeUrl = recipeResults[buttonId].recipe.url;
+    let modalFoot = $("<div>");
+    let recButt = $("<button>");
+    recButt.text("Full Recipe Details");
+    recButt.addClass("btn btn-success")
+    recButt.attr("value", recipeUrl)
+    $("#recipeButton").append(recButt);
+    //let urlId = $(this).attr("value")
+    // let fullRec = $("<button>");
+    // fullRec.text("Full Recipe Instructions");
+    $("#recipeButton").on("click", function () {
+      recipeUrl = recipeResults[buttonId].recipe.url;
       window.open(recipeUrl);
-
-      
-       
-        
-        })
-
-
-        modalBody.prepend(modalPic);
-        // modalBody.append(modalIngredientsDetail);
-        modalBody.append(modalNutrientsDetail);
-
-        $(".modal-body").append(modalBody);
-        $(".modal-footer").append(modal-fotter);
-
-
-
-
-
-
-
-
-
-
+    })
+    modalBody.prepend(modalPic);
+    // modalBody.append(modalIngredientsDetail);
+    modalBody.append(modalNutrientsDetail);
+    $(".modal-body").append(modalBody);
+    $(".modal-footer").append(modal - fotter);
+    // $("#ingredientsList").append(modalIngredientsDetail);
+    // $("#nutrientsList").append(modalNutrientsDetail);
+    // $(".modal-body").append(modalBody)
   })
-
   $('#exampleModal').on('show.bs.modal', function () {
     //alert('hi')
   })
-
-
-
 })
-
-
