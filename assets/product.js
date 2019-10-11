@@ -49,6 +49,18 @@ $(document).ready(function () {
                 let productProtein = $("<p>");
                 productProtein.text("Protein: " + parseInt(productResults[j].food.nutrients.PROCNT));
 
+                
+        let heartButton = $("<button>");
+        heartButton.attr({
+          'type': 'image', 'class': 'heartBut btn', 'data-toggle': 'tooltip', 'data-placement': 'bottom',
+          'title': 'Save for Later'
+        });
+
+                let heartButtonImg = $("<i>");
+                heartButton.attr("data-record", i);
+                 heartButtonImg.attr({ 'class': 'fas fa-heart fa-lg' });
+                 heartButton.append(heartButtonImg);
+
                 resultsProdDiv.append(productLabel);
                 resultsProdDiv.append(productBrand);
                 resultsProdDiv.append(productCategory);
@@ -57,6 +69,8 @@ $(document).ready(function () {
                 resultsProdDiv.append(productFiber);
                 resultsProdDiv.append(productEnergy);
                 resultsProdDiv.append(productProtein);
+               
+                resultsProdDiv.append(heartButton);
 
                 $("#searchResults").append(resultsProdDiv);
 
