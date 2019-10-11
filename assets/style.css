@@ -7,7 +7,10 @@
     border-radius: 25px;
 }
 
-
+.heartBut {
+ position: relative;
+ float: left;
+}
 
 .card-header {
 
@@ -22,7 +25,10 @@
     height: 200px;
     margin-left: 125px;
 }
+ #ingredientButt {
 
+    width: 200px;
+ }
 body { 
    
     background: url(./images/newbackground.jpg) no-repeat center center fixed; 
